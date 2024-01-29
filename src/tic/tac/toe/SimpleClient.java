@@ -15,7 +15,7 @@ public class SimpleClient {
         InetAddress addr;
         
         try {
-            // addr = InetAddress.getByName(null);
+            // addr = InetAddress.getByName(null); 
             addr = InetAddress.getByName("localhost");
         } catch (UnknownHostException ex) {
             System.out.println("Unknown host");

@@ -1,6 +1,5 @@
 package src.tic.tac.toe;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -11,15 +10,15 @@ public class TicTacToe {
     Integer toWin;
 
     public void printPlayGround(){
-        System.out.print(" ");
+        System.out.print(" |");
         for(int i = 0; i < playGround.size(); ++i){
-            System.out.print(columns.get(i));
+            System.out.print(columns.get(i) + "|");
         }
         System.out.println();
         for(int row = 0; row < playGround.size(); ++row){
-            System.out.print(row + 1);
+            System.out.print(row + 1 + "|");
             for(int col = 0; col < playGround.size(); ++col){
-                System.out.print(playGround.get(row).get(col));
+                System.out.print(playGround.get(row).get(col) + "|");
             }
             System.out.println(" ");
         }
@@ -62,7 +61,7 @@ public class TicTacToe {
     }
 
     public boolean win(int row, int col, boolean player){
-        // return true if the player won
+        // check row
         int count = 0;
         for(int i = 0; i < playGround.size(); ++i){
             if(playGround.get(row).get(i).equals(player ? 'X' : 'O')) count++;
@@ -77,21 +76,28 @@ public class TicTacToe {
             if(count == toWin) return true;
         }
 
-        // TODO diagonals
-        // check diagonal
+        // diagonal left upper to right lower
+        int currentRow = row - playGround.size();
+        int currentCol = col - playGround.size();
         count = 0;
-        for(int i = 0; i < playGround.size(); ++i){
-            if(playGround.get(i).get(i).equals(player ? 'X' : 'O')) count++;
+        while(currentRow < playGround.size()){
+            if(inPlayground(currentRow, currentCol) && playGround.get(currentRow).get(currentCol).equals(player ? 'X' : 'O')) count++;            
             else count = 0;
             if(count == toWin) return true;
+            currentRow++; currentCol++;
         }
-        // check anti-diagonal
+
+        // diagonal right upper to left lower
+        currentRow = row + playGround.size();
+        currentCol = col - playGround.size();
         count = 0;
-        for(int i = 0; i < playGround.size(); ++i){
-            if(playGround.get(i).get(playGround.size() - i - 1).equals(player ? 'X' : 'O')) count++;
+        while(currentRow >= 0){
+            if(inPlayground(currentRow, currentCol) && playGround.get(currentRow).get(currentCol).equals(player ? 'X' : 'O')) count++;
             else count = 0;
             if(count == toWin) return true;
+            currentRow--; currentCol++;
         }
+        
         return false;
     }
 
