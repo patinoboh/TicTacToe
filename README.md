@@ -21,7 +21,7 @@ When you successfully downloaded repository, follow instructions how to run the 
 Please make sure you are in the **main folder** (that means folder TicTacToe)
 
 ```bash
-javac -cd bin/ src/tic/tac/toe/*.java
+javac -d bin/ src/tic/tac/toe/*.java
 ```
 
 #### Server
