@@ -1,1 +1,3 @@
 # TicTacToe
+
+## Patrik Brocek
