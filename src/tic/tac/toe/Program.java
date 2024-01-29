@@ -1,8 +1,5 @@
 package src.tic.tac.toe;
 
-import src.tic.tac.toe.SimpleClient;
-import src.tic.tac.toe.SimpleServer;
-
 public class Program {
 
     public static void main(String[] args){
